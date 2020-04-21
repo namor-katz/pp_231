@@ -12,9 +12,33 @@
     <title>Title</title>
 </head>
 <body>
-<c:forEach var="user" items="${list}">
-    <p>${user.name}</p>
-    <p>${user.email}</p>
-</c:forEach>
+
+<div align="center">
+    <table border="1" cellpadding="5">
+        <caption>List Users</caption>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Actions</th>
+        </tr>
+        <c:forEach var="user" items="${list}">
+            <tr>
+                <td><c:out value="${user.id}" /></td>
+                <td><c:out value="${user.name}" /></td>
+                <td><c:out value="${user.email}" /></td>
+                <td><c:out value="${user.role}" /></td>
+                <td>
+                    <a href="/my_app_war/edit?id=<c:out value='${user.id}' />">Edit</a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="/my_app_war/delete?id=<c:out value='${user.id}' />">Delete</a>
+                </td>
+
+            </tr>
+
+        </c:forEach>
+    </table>
+</div>
 </body>
 </html>

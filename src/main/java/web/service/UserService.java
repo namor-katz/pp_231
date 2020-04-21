@@ -11,7 +11,9 @@ public class UserService {
         List<User> list = new LinkedList<>();
 
         User user = new User("ivan", "govnov@mail.com");
+        User user2 = new User("Andrei", "ivanov@yandex.ru");
         list.add(user);
+        list.add(user2);
         return list;
     }
 }
