@@ -4,7 +4,7 @@ import web.model.User;
 
 import java.util.List;
 
-public interface UserDao {
+public interface userDao {
     public void userAdd(User user);
     public void deleteUserById(Long id);
     public User getUserById(Long id);

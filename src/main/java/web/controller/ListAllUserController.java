@@ -17,9 +17,9 @@ public class ListAllUserController {
     @RequestMapping(value = "list", method = RequestMethod.GET)
     public String returnListUsers(ModelMap model) {
         List<User> list = new LinkedList<>();
-        UserService userService = new UserService();
+        UserService userService = UserService.getInstance();
         list = userService.getUserList();
-        model.addAttribute("list", list);
+        model.addAttribute("list", list);   //haha. classic!
         return "listAllUsers";
     }
 }

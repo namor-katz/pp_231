@@ -39,11 +39,17 @@ public class User {
         this.password = password;
         this.maxWeight = maxWeight;
     }
+
     public User(String name, String password) {
         this.name = name;
         this.password = password;
     }
-
+/*
+    public User(String name, String email) {
+        this.name = name;
+        this.email = email;
+    }
+*/
     //getter's and setter's
 
     public Long getId() {

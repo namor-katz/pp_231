@@ -15,12 +15,12 @@
 
 <div align="center">
     <table border="1" cellpadding="5">
-        <caption>List Users</caption>
+        <caption>sumo wrestlers</caption>
         <tr>
             <th>ID</th>
             <th>Name</th>
             <th>Email</th>
-            <th>Role</th>
+            <th>MaxWeight</th>
             <th>Actions</th>
         </tr>
         <c:forEach var="user" items="${list}">
@@ -28,7 +28,7 @@
                 <td><c:out value="${user.id}" /></td>
                 <td><c:out value="${user.name}" /></td>
                 <td><c:out value="${user.email}" /></td>
-                <td><c:out value="${user.role}" /></td>
+                <td><c:out value="${user.maxWeight}" /></td>
                 <td>
                     <a href="/my_app_war/edit?id=<c:out value='${user.id}' />">Edit</a>
                     &nbsp;&nbsp;&nbsp;&nbsp;
