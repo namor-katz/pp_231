@@ -1,48 +1,48 @@
 package web.model;
 
+import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
+@Entity
+@Table(name = "users")
 public class User {
-
+    @Id@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column
     private String name;
+
+    @Column
     private String email;
+
+    @Column
     private String password;
-    private String role;
+
+    @Column
+    @Min(100)
+    @Max(300)
+    private int maxWeight;
 
     //constructors
-    User() {};
+    public User() {};
 
-    public User(Long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
-    public User(String name, String email) {
-        this.name = name;
-        this.email = email;
-    }
-
-    public User(Long id, String name, String email) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-    }
-
-    public User(Long id, String name, String email, String password) {
-        this.id = id;
+    public User(String name, String email, String password) {
         this.name = name;
         this.email = email;
         this.password = password;
     }
 
-    public User(Long id, String name, String email, String password, String role) {
-        this.id = id;
+    public User(String name, String email, String password, @Min(100) @Max(300) int maxWeight) {
         this.name = name;
         this.email = email;
         this.password = password;
-        this.role = role;
+        this.maxWeight = maxWeight;
     }
-
+    public User(String name, String password) {
+        this.name = name;
+        this.password = password;
+    }
 
     //getter's and setter's
 
@@ -62,8 +62,8 @@ public class User {
         return password;
     }
 
-    public String getRole() {
-        return role;
+    public int getMaxWeight() {
+        return maxWeight;
     }
 
     public void setId(Long id) {
@@ -82,7 +82,7 @@ public class User {
         this.password = password;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setMaxWeight(int maxWeight) {
+        this.maxWeight = maxWeight;
     }
 }
