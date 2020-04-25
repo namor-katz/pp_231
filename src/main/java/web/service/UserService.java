@@ -1,10 +1,14 @@
 package web.service;
 
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import web.model.User;
 
 import java.util.LinkedList;
 import java.util.List;
 
+@Service    //можно
+@Transactional  //нужно ли?
 public class UserService {
 
     private static UserService userService;
