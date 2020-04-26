@@ -1,5 +1,6 @@
 package web.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,11 +15,14 @@ import java.util.List;
 @RequestMapping("/")
 public class ListAllUserController {
 
+    @Autowired
+    UserService userService;
+
     @RequestMapping(value = "list", method = RequestMethod.GET)
     public String returnListUsers(ModelMap model) {
-        List<User> list = new LinkedList<>();
-        UserService userService = UserService.getInstance();
-        list = userService.getUserList();
+//        List<User> list = new LinkedList<>();
+//        UserService userService = UserService.getInstance();
+        List<User> list = userService.getUserList();
         model.addAttribute("list", list);   //haha. classic!
         return "listAllUsers";
     }

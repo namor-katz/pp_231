@@ -25,17 +25,17 @@ public class UserService {
         return userService;
     }
 
-    private List<User> list = new LinkedList<>();
+//    private List<User> list = new LinkedList<>();
 
     public List<User> getUserList() {
-
-//        List<User> list = new LinkedList<>();
-
-        User user = new User("ivan", "govnov@mail.com", "123", 150);
-        User user2 = new User("Andrei", "ivanov@yandex.ru", "123", 156);
-        list.add(user);
-        list.add(user2);
+        List<User> list = userDao.getAllUsers();
+        System.out.println("чо ебить");
         return list;
+
+//        User user = new User("ivan", "govnov@mail.com", "123", 150);
+//        User user2 = new User("Andrei", "ivanov@yandex.ru", "123", 156);
+//        list.add(user);
+//        list.add(user2);
     }
 
     public void save(User user) {
