@@ -10,13 +10,13 @@ import web.service.UserService;
 
 @Controller
 @RequestMapping("/")
-public class newUser {
+public class NewUserController {
 
     @Autowired
     UserService userService;
 
     @RequestMapping(value = "new", method = RequestMethod.GET)
-    public String newCustomerForm() {
+    public String newUserCreate() {
         return "new_user";
     }
 

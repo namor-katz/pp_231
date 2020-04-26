@@ -21,4 +21,8 @@ public class UserService {
     public void save(User user) {
         userDao.userAdd(user);
     }
+
+    public void deleteById(Long id) {
+        userDao.deleteUserById(id);
+    }
 }
