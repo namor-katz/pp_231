@@ -1,5 +1,6 @@
 package web.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import web.dao.UserDao;
@@ -13,7 +14,9 @@ import java.util.List;
 public class UserService {
 
     private static UserService userService;
-    private UserDao userDao;
+
+    @Autowired
+    UserDao userDao;
 
     public static UserService getInstance()  {
         if (userService == null) {
@@ -36,6 +39,7 @@ public class UserService {
     }
 
     public void save(User user) {
-        list.add(user);
+//        list.add(user);
+        userDao.userAdd(user);
     }
 }

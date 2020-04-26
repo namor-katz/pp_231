@@ -1,5 +1,6 @@
 package web.dao;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -14,7 +15,8 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void userAdd(User user) {
-
+        Session session = sessionFactory.openSession();
+        session.save(user);
     }
 
     @Override
