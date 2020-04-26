@@ -7,7 +7,7 @@ import web.model.User;
 import java.util.List;
 
 @Repository
-public class userDaoImpl implements userDao {
+public class UserDaoImpl implements UserDao {
 
     @Autowired
     private SessionFactory sessionFactory;
