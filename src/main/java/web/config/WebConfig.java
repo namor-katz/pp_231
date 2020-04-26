@@ -14,10 +14,6 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
-import web.model.User;
-
-import javax.sql.DataSource;
-import java.util.Properties;
 
 @Configuration
 @EnableWebMvc
