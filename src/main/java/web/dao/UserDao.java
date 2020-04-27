@@ -8,6 +8,6 @@ public interface UserDao {
     public void deleteUserById(Long id);
     public User getUserById(Long id);
     public User getUserByName(String name);
-    public User editUserById(Long id);
+    public void editUserById(Long id, String name, String email, int maxWeitht);
     public List<User> getAllUsers();
 }

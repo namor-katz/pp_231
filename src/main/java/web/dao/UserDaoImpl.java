@@ -47,6 +47,8 @@ public class UserDaoImpl implements UserDao {
         Query q = session.createQuery(hql);
         q.setParameter("id", id);
         List<User> list = q.list();
+        tx.commit();
+        session.close();
         return list.get(0);
     }
 
@@ -57,10 +59,23 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public User editUserById(Long id) {
+    public void editUserById(Long id, String name, String email, int maxWeigth) {
+        String hql = "update User set name = :name, email = :email, maxWeight = :maxWeigth where id = :id";
         Session session = sessionFactory.openSession();
-        User user =  session.get(User.class, id);
-        return user;
+        Transaction tx = session.getTransaction();
+        Query q = session.createQuery(hql);
+        q.setParameter("id", id);
+        q.setParameter("name", name);
+        q.setParameter("email", email);
+        q.setParameter("maxWeigth", maxWeigth);
+        try {
+            int result = q.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        tx.commit();
+        session.close();
+
     }
 
 

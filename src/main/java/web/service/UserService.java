@@ -26,8 +26,8 @@ public class UserService {
         userDao.deleteUserById(id);
     }
 
-    public void editById(Long id) {
-        userDao.editUserById(id);
+    public void editById(Long id, String name, String email, int maxWeight) {
+        userDao.editUserById(id, name, email, maxWeight);
     }
 
     public User getUserById(Long id ) {

@@ -15,11 +15,15 @@
 <h2>This user from edit</h2>
 
 <form method="post" accept-charset="UTF-8">
+    <p>name</p>
     <p> <input type="text" name="name" value="<c:out value='${user.name}' />" />  </p>
+    <p>email</p>
     <p><input type="text" name="email" value="<c:out value='${user.email}' />" /> </p>
+    <p>maxWeight</p>
+    <p><input type="text" name="maxWeight" value="<c:out value='${user.maxWeight}' />" ></p>
     <input type="hidden" name="id" value="<c:out value='${user.id}' /> " />
+<%--    <input type="hidden", name="password"--%>
     <p><input type="submit" value="edit!"></p>
 </form>
 
 </body>
-</html>

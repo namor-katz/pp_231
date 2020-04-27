@@ -19,8 +19,17 @@ public class EditUserController {
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
     public String editUser(@RequestParam long id, ModelMap model) {
         User user = userService.getUserById(id);
-        System.out.println("ебать, вот же твой ид! " + id);
         model.addAttribute("user", user);
         return "edit_user";
     }
+
+    @RequestMapping(value = "/edit", method = RequestMethod.POST)
+    public String editResult(@RequestParam long id, @RequestParam String name,
+                             @RequestParam String email, @RequestParam int maxWeight) {
+
+        userService.editById(id, name, email, maxWeight);
+
+        return "redirect:/list";
+    }
+
 }
