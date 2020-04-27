@@ -25,4 +25,12 @@ public class UserService {
     public void deleteById(Long id) {
         userDao.deleteUserById(id);
     }
+
+    public void editById(Long id) {
+        userDao.editUserById(id);
+    }
+
+    public User getUserById(Long id ) {
+        return userDao.getUserById(id);
+    }
 }

@@ -41,8 +41,15 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public User getUserById(Long id) {
-        return null;
+        String hql = "from User where id = :id";
+        Session session = sessionFactory.openSession();
+        Transaction tx = session.beginTransaction();
+        Query q = session.createQuery(hql);
+        q.setParameter("id", id);
+        List<User> list = q.list();
+        return list.get(0);
     }
+
 
     @Override
     public User getUserByName(String name) {
@@ -50,9 +57,12 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public boolean editUserById(Long id) {
-        return false;
+    public User editUserById(Long id) {
+        Session session = sessionFactory.openSession();
+        User user =  session.get(User.class, id);
+        return user;
     }
+
 
     @Override
     public List<User> getAllUsers() {

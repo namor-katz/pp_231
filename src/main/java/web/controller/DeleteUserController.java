@@ -15,7 +15,7 @@ public class DeleteUserController {
     UserService userService;
 
     @RequestMapping("/delete")
-    public String deleteCustomerForm(@RequestParam long id) {
+    public String deleteUser(@RequestParam long id) {
         userService.deleteById(id);
         return "redirect:/list";
     }

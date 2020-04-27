@@ -8,6 +8,6 @@ public interface UserDao {
     public void deleteUserById(Long id);
     public User getUserById(Long id);
     public User getUserByName(String name);
-    public boolean editUserById(Long id);
+    public User editUserById(Long id);
     public List<User> getAllUsers();
 }

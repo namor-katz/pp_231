@@ -30,7 +30,7 @@
                 <td><c:out value="${user.email}" /></td>
                 <td><c:out value="${user.maxWeight}" /></td>
                 <td>
-                    <a href="/my_app_war/edit?id=<c:out value='${user.id}' />">Edit</a>
+                    <a href="/edit?id=<c:out value='${user.id}' />">Edit</a>
                     &nbsp;&nbsp;&nbsp;&nbsp;
                     <a href="/delete?id=<c:out value='${user.id}' />">Delete</a>
                 </td>
