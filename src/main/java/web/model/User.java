@@ -20,9 +20,7 @@ public class User {
     private String password;
 
     @Column
-    @Min(100)
-    @Max(300)
-    private int maxWeight;
+    private int maxweight;
 
     //constructors
     public User() {};
@@ -33,11 +31,11 @@ public class User {
         this.password = password;
     }
 
-    public User(String name, String email, String password, @Min(100) @Max(300) int maxWeight) {
+    public User(String name, String email, String password, int maxweight) {
         this.name = name;
         this.email = email;
         this.password = password;
-        this.maxWeight = maxWeight;
+        this.maxweight = maxweight;
     }
 
     public User(String name, String password) {
@@ -63,8 +61,8 @@ public class User {
         return password;
     }
 
-    public int getMaxWeight() {
-        return maxWeight;
+    public int getMaxweight() {
+        return maxweight;
     }
 
     public void setId(Long id) {
@@ -83,7 +81,7 @@ public class User {
         this.password = password;
     }
 
-    public void setMaxWeight(int maxWeight) {
-        this.maxWeight = maxWeight;
+    public void setMaxweight(int maxWeight) {
+        this.maxweight = maxWeight;
     }
 }

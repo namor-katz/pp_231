@@ -25,9 +25,9 @@ public class EditUserController {
 
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     public String editResult(@RequestParam long id, @RequestParam String name,
-                             @RequestParam String email, @RequestParam int maxWeight) {
+                             @RequestParam String email, @RequestParam int maxweight) {
 
-        userService.editById(id, name, email, maxWeight);
+        userService.editById(id, name, email, maxweight);
 
         return "redirect:/list";
     }

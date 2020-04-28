@@ -20,7 +20,7 @@
         Email: <br>
         <input type="text", name="email"><br>
         MaxWeigth: <br>
-        <input type="text", name="maxWeight"><br>
+        <input type="text", name="maxweight"><br>
         <br>
         <input type="submit" value="Create!">
 

@@ -20,7 +20,7 @@
     <p>email</p>
     <p><input type="text" name="email" value="<c:out value='${user.email}' />" /> </p>
     <p>maxWeight</p>
-    <p><input type="text" name="maxWeight" value="<c:out value='${user.maxWeight}' />" ></p>
+    <p><input type="text" name="maxweight" value="<c:out value='${user.maxweight}' />" > </p>
     <input type="hidden" name="id" value="<c:out value='${user.id}' /> " />
 <%--    <input type="hidden", name="password"--%>
     <p><input type="submit" value="edit!"></p>

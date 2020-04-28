@@ -28,7 +28,7 @@
                 <td><c:out value="${user.id}" /></td>
                 <td><c:out value="${user.name}" /></td>
                 <td><c:out value="${user.email}" /></td>
-                <td><c:out value="${user.maxWeight}" /></td>
+                <td><c:out value="${user.maxweight}" /></td>
                 <td>
                     <a href="/edit?id=<c:out value='${user.id}' />">Edit</a>
                     &nbsp;&nbsp;&nbsp;&nbsp;

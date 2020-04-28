@@ -1,6 +1,6 @@
 package web.dao;
 
-import org.hibernate.Query;
+import org.hibernate.query.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -59,20 +59,16 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public void editUserById(Long id, String name, String email, int maxWeigth) {
-        String hql = "update User set name = :name, email = :email, maxWeight = :maxWeigth where id = :id";
+    public void editUserById(Long id, String name, String email, int maxweigth) {
+        String hql = "update User set name = :name, email = :email, maxweight = :maxweight where id = :id";
         Session session = sessionFactory.openSession();
-        Transaction tx = session.getTransaction();
+        Transaction tx = session.beginTransaction();
         Query q = session.createQuery(hql);
         q.setParameter("id", id);
         q.setParameter("name", name);
         q.setParameter("email", email);
-        q.setParameter("maxWeigth", maxWeigth);
-        try {
-            int result = q.executeUpdate();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        q.setParameter("maxweight", maxweigth);
+        q.executeUpdate();
         tx.commit();
         session.close();
 
