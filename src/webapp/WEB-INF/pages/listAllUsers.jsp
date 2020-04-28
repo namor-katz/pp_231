@@ -12,7 +12,7 @@
     <title>Title</title>
 </head>
 <body>
-<h2 align="center"><a href="/list">Add new user</a></h2>
+<h2 align="center"><a href="/new">Add new user</a></h2>
 <h3></h3>
 <div align="center">
     <table border="1" cellpadding="5">
