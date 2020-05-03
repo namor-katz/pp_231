@@ -9,7 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Список пользователей</title>
 </head>
 <body>
 <h2 align="center"><a href="/new">Add new user</a></h2>

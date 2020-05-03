@@ -1,8 +1,7 @@
 package web.model;
 
 import javax.persistence.*;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -22,6 +21,12 @@ public class User {
     @Column
     private int maxweight;
 
+    @OneToMany  //(fetch = FetchType.LAZY, mappedBy = "users")
+    @JoinColumn(name="roles")
+//    @OneToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name="roles")
+    private Set<Role> roles;
+
     //constructors
     public User() {};
 
@@ -36,6 +41,14 @@ public class User {
         this.email = email;
         this.password = password;
         this.maxweight = maxweight;
+    }
+
+    public User(String name, String email, String password, int maxweight, Set<Role> roles) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.maxweight = maxweight;
+        this.roles = roles;
     }
 
     public User(String name, String password) {
@@ -83,5 +96,13 @@ public class User {
 
     public void setMaxweight(int maxWeight) {
         this.maxweight = maxWeight;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 }

@@ -6,7 +6,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>New User</title>
+    <title>Add New User</title>
 </head>
 <body>
 <div align="center">
