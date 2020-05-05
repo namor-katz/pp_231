@@ -1,12 +1,16 @@
 package web.model;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
-import java.util.Set;
+import java.util.Collection;
 
 @Entity
 @Table(name = "users")
 public class User {
-    @Id@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column
@@ -21,11 +25,13 @@ public class User {
     @Column
     private int maxweight;
 
-    @OneToMany  //(fetch = FetchType.LAZY, mappedBy = "users")
-    @JoinColumn(name="roles")
-//    @OneToOne(cascade = CascadeType.ALL)
+//    @Transient
+//    private String passwordConfirm;
+
+//    @OneToMany  //(fetch = FetchType.LAZY, mappedBy = "users")
 //    @JoinColumn(name="roles")
-    private Set<Role> roles;
+    @Column
+    private String roles;
 
     //constructors
     public User() {};
@@ -40,13 +46,18 @@ public class User {
         this.name = name;
         this.email = email;
         this.password = password;
-        this.maxweight = maxweight;
     }
 
-    public User(String name, String email, String password, int maxweight, Set<Role> roles) {
+    public User(String name, String email, String password, int maxweight, String roles) {
         this.name = name;
         this.email = email;
         this.password = password;
+        this.roles = roles;
+    }
+
+    public User(Long id, String email, int maxweight, String roles) {
+        this.id = id;
+        this.email = email;
         this.maxweight = maxweight;
         this.roles = roles;
     }
@@ -74,10 +85,6 @@ public class User {
         return password;
     }
 
-    public int getMaxweight() {
-        return maxweight;
-    }
-
     public void setId(Long id) {
         this.id = id;
     }
@@ -94,15 +101,23 @@ public class User {
         this.password = password;
     }
 
-    public void setMaxweight(int maxWeight) {
-        this.maxweight = maxWeight;
-    }
 
-    public Set<Role> getRoles() {
+    public String getRoles() {
         return roles;
     }
 
-    public void setRoles(Set<Role> roles) {
+    public void setRoles(String roles) {
         this.roles = roles;
     }
+
+    public int getMaxweight() {
+        return maxweight;
+    }
+
+    public void setMaxweight(int maxweight) {
+        this.maxweight = maxweight;
+    }
+
+    //implements
 }
+
