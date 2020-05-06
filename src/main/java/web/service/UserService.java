@@ -19,6 +19,13 @@ public class UserService {
     }
 
     public void save(User user) {
+        //т.к. в веб-форме admin, а в таблице, с какого-то хуя должен быть ROLE_admin, переебеним так.
+        if(user.getRoles().equals("admin")) {
+            user.setRoles("ROLE_admin");
+        }
+        else if(user.getRoles().equals("user")) {
+            user.setRoles("ROLE_user");
+        }
         userDao.userAdd(user);
     }
 
