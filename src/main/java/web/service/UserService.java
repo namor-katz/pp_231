@@ -39,6 +39,7 @@ public class UserService implements UserDetailsService {
         else if(user.getRoles().equals("user")) {
             user.setRoles(Collections.singleton(new Role(1L, "ROLE_user")));
         }
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userDao.userAdd(user);
     } catch (Exception e) {
         e.printStackTrace();
@@ -62,6 +63,9 @@ public class UserService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         User user = userDao.getUserByName(s);
+        Role role = user.getRoles().iterator().next();
+        String srole = role.getRole();
+        System.out.println("thix user is RoLe = " + srole);
         if (user == null) {
             throw new UsernameNotFoundException("This user not found");
         }

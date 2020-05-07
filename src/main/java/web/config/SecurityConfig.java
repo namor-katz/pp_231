@@ -21,23 +21,20 @@ import javax.sql.DataSource;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     //!! ты пишешь туда admin, и права выставляешь на admin. но должно быть там ROLE_admin. блядь.
+/*
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-                .inMemoryAuthentication()
-                .withUser("ADMIN")
-                .password("{noop}ADMIN")
-                .roles("admin");
+        auth.inMemoryAuthentication().withUser("ADMIN").password("{noop}ADMIN").roles("admin");
     }
+*/
+    @Autowired
+    UserService userService;
 
-        @Autowired
-        UserService userService;
-/*
     @Autowired
     void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userService).passwordEncoder(bCryptPasswordEncoder());
     }
-*/
+
     @Autowired
     private DataSource dataSource;
 
@@ -75,7 +72,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/login").anonymous()  //доступ даём всем, в тч анонимусам.
                 .antMatchers("/hello", "/list", "/edit", "/delete", "/new")
-                .access("hasAnyRole('admin')").anyRequest().authenticated();
+                .access("hasAnyRole('ADMIN')").anyRequest().authenticated();
     }
 
     @Bean

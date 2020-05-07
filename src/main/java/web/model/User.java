@@ -32,7 +32,6 @@ public class User implements UserDetails {
     private String passwordConfirm;
 
     @ManyToMany(fetch = FetchType.EAGER)  //(fetch = FetchType.LAZY, mappedBy = "users")
-//    @JoinColumn(name="roles")
     private Set<Role> roles;
 //    @Column
 //    private String roles;
@@ -135,22 +134,22 @@ public class User implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 }
 

@@ -15,7 +15,7 @@
 <form method="post" action="/login">
     <input type="text" name="j_username"/>
     <input type="password" name="j_password"/>
-    <input type="submit"/>
+    <input type="submit" value="вход!"/>
 </form>
 
 </body>
