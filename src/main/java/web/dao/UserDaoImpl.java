@@ -85,10 +85,9 @@ public class UserDaoImpl implements UserDao {
 
     }
 
-
     @Override
     public List<User> getAllUsers() {
-        TypedQuery<User> query=sessionFactory.getCurrentSession().createQuery("from User");
+        TypedQuery<User> query=sessionFactory.openSession().createQuery("from User");
         return query.getResultList();
     }
 }

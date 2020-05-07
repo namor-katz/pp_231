@@ -26,12 +26,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth
                 .inMemoryAuthentication()
                 .withUser("ADMIN")
-                .password("ADMIN")
+                .password("{noop}ADMIN")
                 .roles("admin");
     }
 
-    @Autowired
-    UserService userService;
+        @Autowired
+        UserService userService;
 /*
     @Autowired
     void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
@@ -45,6 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
 /*
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -76,9 +77,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/hello", "/list", "/edit", "/delete", "/new")
                 .access("hasAnyRole('admin')").anyRequest().authenticated();
     }
-/*
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return NoOpPasswordEncoder.getInstance();
-    }*/
+    }
 }
