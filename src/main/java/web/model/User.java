@@ -5,10 +5,13 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class User implements UserDetails {
+//    String ROLE_PREFIX = "ROLE_";   //может и не пригодится.
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -25,13 +28,14 @@ public class User {
     @Column
     private int maxweight;
 
-//    @Transient
-//    private String passwordConfirm;
+    @Transient
+    private String passwordConfirm;
 
-//    @OneToMany  //(fetch = FetchType.LAZY, mappedBy = "users")
+    @ManyToMany(fetch = FetchType.EAGER)  //(fetch = FetchType.LAZY, mappedBy = "users")
 //    @JoinColumn(name="roles")
-    @Column
-    private String roles;
+    private Set<Role> roles;
+//    @Column
+//    private String roles;
 
     //constructors
     public User() {};
@@ -48,14 +52,14 @@ public class User {
         this.password = password;
     }
 
-    public User(String name, String email, String password, int maxweight, String roles) {
+    public User(String name, String email, String password, int maxweight, Set<Role> roles) {
         this.name = name;
         this.email = email;
         this.password = password;
         this.roles = roles;
     }
 
-    public User(Long id, String email, int maxweight, String roles) {
+    public User(Long id, String email, int maxweight, Set<Role> roles) {
         this.id = id;
         this.email = email;
         this.maxweight = maxweight;
@@ -101,12 +105,11 @@ public class User {
         this.password = password;
     }
 
-
-    public String getRoles() {
+    public Set<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(String roles) {
+    public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
 
@@ -119,5 +122,35 @@ public class User {
     }
 
     //implements
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return getRoles();
+    }
+
+    @Override
+    public String getUsername() {
+        return null;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return false;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return false;
+    }
 }
 

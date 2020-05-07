@@ -21,38 +21,38 @@ import javax.sql.DataSource;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     //!! ты пишешь туда admin, и права выставляешь на admin. но должно быть там ROLE_admin. блядь.
-/*
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().withUser("ADMIN").password("ADMIN").roles("admin");
+        auth
+                .inMemoryAuthentication()
+                .withUser("ADMIN")
+                .password("ADMIN")
+                .roles("admin");
     }
-*/
+
     @Autowired
     UserService userService;
 /*
     @Autowired
     void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.userDetailsService(userService).passwordEncoder(bCryptPasswordEncoder());
-        auth.jdbcAuthentication().dataSource(dataSource).withDefaultSchema()
-                .withUser()
+        auth.userDetailsService(userService).passwordEncoder(bCryptPasswordEncoder());
     }
 */
     @Autowired
     private DataSource dataSource;
 
-/*
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
-*/
-
+/*
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication().dataSource(dataSource)
         .usersByUsernameQuery("select name, password, 'true' from users where name=?")      //проверить, что такой юзер есть?
         .authoritiesByUsernameQuery("select name, roles from users where name=?");            //проверить, какая у него роль?
     }
+*/
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -73,11 +73,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/login").anonymous()  //доступ даём всем, в тч анонимусам.
-                .antMatchers("/hello", "/list", "/edit", "/delete", "/new").access("hasAnyRole('admin')").anyRequest().authenticated();
+                .antMatchers("/hello", "/list", "/edit", "/delete", "/new")
+                .access("hasAnyRole('admin')").anyRequest().authenticated();
     }
-
+/*
     @Bean
     public PasswordEncoder passwordEncoder() {
         return NoOpPasswordEncoder.getInstance();
-    }
+    }*/
 }

@@ -7,6 +7,8 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import web.model.User;
+
+import javax.persistence.Transient;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
@@ -55,7 +57,16 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public User getUserByName(String name) {
-        return null;
+        String hql = "from User where name = :name";
+        Session session = sessionFactory.openSession();
+        Transaction tx = session.beginTransaction();
+        Query q = session.createQuery(hql);
+        q.setParameter("name", name);
+        List<User> list = q.list();
+        tx.commit();
+        session.close();
+        User user = list.get(0);
+        return user;
     }
 
     @Override
