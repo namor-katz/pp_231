@@ -59,7 +59,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/login").anonymous()  //доступ даём всем, в тч анонимусам.
                 .antMatchers("/user").access("hasAnyRole('USER')")
                 .antMatchers("/hello", "/list", "/edit", "/delete", "/new")
-                .access("hasAnyRole('ADMIN')").anyRequest().authenticated();
+                .access("hasAnyRole('ADMIN')").anyRequest().authenticated() //финал был тут
+                .and()
+                .logout()
+                .permitAll()
+                .logoutSuccessUrl("/login");;
     }
 
     @Bean
