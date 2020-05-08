@@ -7,7 +7,6 @@ import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.WebAttributes;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
-import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -37,7 +36,6 @@ public class MySimpleUrlAuthenticationSuccessHandler implements AuthenticationSu
         final String targetUrl = determineTargetUrl(authentication);
 
         if (response.isCommitted()) {
-//            logger.debug("Response has already been committed. Unable to redirect to " + targetUrl);
             return;
         }
         redirectStrategy.sendRedirect(request, response, targetUrl);

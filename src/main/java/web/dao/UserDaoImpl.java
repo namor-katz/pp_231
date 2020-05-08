@@ -7,8 +7,6 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import web.model.User;
-
-import javax.persistence.Transient;
 import javax.persistence.TypedQuery;
 import java.util.List;
 

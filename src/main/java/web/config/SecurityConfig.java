@@ -20,13 +20,7 @@ import javax.sql.DataSource;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-    //!! ты пишешь туда admin, и права выставляешь на admin. но должно быть там ROLE_admin. блядь.
-/*
-    @Override
-    public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().withUser("ADMIN").password("{noop}ADMIN").roles("ADMIN");
-    }
-*/
+
     @Autowired
     UserServiceImp userServiceImp;
 
@@ -43,20 +37,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
-/*
-    @Override
-    public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.jdbcAuthentication().dataSource(dataSource)
-        .usersByUsernameQuery("select name, password, 'true' from users where name=?")      //проверить, что такой юзер есть?
-        .authoritiesByUsernameQuery("select name, roles from users where name=?");            //проверить, какая у него роль?
-    }
-*/
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.formLogin()
-                .loginPage("/login")        //принудительно переадресует на указанную страницу. тупо не пускает на другие
-//                .successHandler(new LoginSuccessHandler())
+                .loginPage("/login")
                 .successHandler(myAuthenticationSuccessHandler())
                 .loginProcessingUrl("/login")   //
                 .usernameParameter("j_username")

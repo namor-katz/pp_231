@@ -10,7 +10,6 @@ import java.util.Set;
 @Entity
 @Table(name = "users")
 public class User implements UserDetails {
-//    String ROLE_PREFIX = "ROLE_";   //может и не пригодится.
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,10 +30,8 @@ public class User implements UserDetails {
     @Transient
     private String passwordConfirm;
 
-    @ManyToMany(fetch = FetchType.EAGER)  //(fetch = FetchType.LAZY, mappedBy = "users")
+    @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
-//    @Column
-//    private String roles;
 
     //constructors
     public User() {};

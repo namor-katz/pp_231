@@ -6,7 +6,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import web.dao.RoleDao;
 import web.dao.UserDao;
 import web.model.Role;
@@ -15,7 +14,6 @@ import java.util.List;
 import java.util.Collections;
 
 @Service    //можно
-//@Transactional  //нужно ли?
 public class UserServiceImp implements UserDetailsService, UserService {
 
     @Autowired
