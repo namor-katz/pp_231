@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.ui.ModelMap;
 import web.model.User;
-import web.service.UserService;
+import web.service.UserServiceImp;
 import java.util.List;
 
 @Controller
@@ -14,11 +14,11 @@ import java.util.List;
 public class ListAllUserController {
 
     @Autowired
-    UserService userService;
+    UserServiceImp userServiceImp;
 
     @RequestMapping(value = "list", method = RequestMethod.GET)
     public String returnListUsers(ModelMap model) {
-        List<User> list = userService.getUserList();
+        List<User> list = userServiceImp.getUserList();
         model.addAttribute("list", list);   //haha. classic!
         return "listAllUsers";
     }

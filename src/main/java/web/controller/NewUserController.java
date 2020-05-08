@@ -6,14 +6,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import web.model.User;
-import web.service.UserService;
+import web.service.UserServiceImp;
 
 @Controller
 @RequestMapping("/")
 public class NewUserController {
 
     @Autowired
-    UserService userService;
+    UserServiceImp userServiceImp;
 
     @RequestMapping(value = "new", method = RequestMethod.GET)
     public String newUserCreate() {
@@ -23,7 +23,7 @@ public class NewUserController {
     @RequestMapping(value = "new", method = RequestMethod.POST)
     public String saveCustomer(@ModelAttribute("user") User user) {
 //        System.out.println("ща создам юзера!");
-        userService.save(user);
+        userServiceImp.save(user);
         return "redirect:/list";
     }
 }

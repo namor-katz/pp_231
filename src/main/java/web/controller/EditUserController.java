@@ -7,18 +7,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import web.model.User;
-import web.service.UserService;
+import web.service.UserServiceImp;
 
 @Controller
 @RequestMapping
 public class EditUserController {
 
     @Autowired
-    UserService userService;
+    UserServiceImp userServiceImp;
 
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
     public String editUser(@RequestParam long id, ModelMap model) {
-        User user = userService.getUserById(id);
+        User user = userServiceImp.getUserById(id);
         model.addAttribute("user", user);
         return "edit_user";
     }
@@ -27,7 +27,7 @@ public class EditUserController {
     public String editResult(@RequestParam long id, @RequestParam String name,
                              @RequestParam String email, @RequestParam int maxweight) {
 
-        userService.editById(id, name, email, maxweight);
+        userServiceImp.editById(id, name, email, maxweight);
 
         return "redirect:/list";
     }
