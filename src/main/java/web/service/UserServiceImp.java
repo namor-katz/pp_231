@@ -33,7 +33,7 @@ public class UserServiceImp implements UserDetailsService, UserService {
         System.out.println("Я пробую сохранить!");
         try {
             if(user.getRoles().equals("admin")) {
-                user.setRoles(Collections.singleton(new Role(1L, "ROLE_admin")));
+                user.setRoles(Collections.singleton(new Role(2L, "ROLE_admin")));
             }
             else if(user.getRoles().equals("user")) {
                 user.setRoles(Collections.singleton(new Role(1L, "ROLE_user")));
