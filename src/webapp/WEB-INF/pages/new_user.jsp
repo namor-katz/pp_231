@@ -33,6 +33,7 @@
     </form>
 
 
+    <jsp:include page="logout.jsp" />
 </div>
 </body>
 </html>

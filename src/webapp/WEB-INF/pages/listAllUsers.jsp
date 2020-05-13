@@ -40,7 +40,8 @@
 
         </c:forEach>
     </table>
-<p><a href="<c:url value="/logout" />">Logout</a></p>
+<%--<p><a href="<c:url value="/logout" />">Logout</a></p>--%>
+    <jsp:include page="logout.jsp" />
 </div>
 </body>
 </html>
