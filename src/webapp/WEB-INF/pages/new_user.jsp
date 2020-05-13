@@ -26,7 +26,6 @@
             <option>user</option>
             <option>admin</option>
         </select></p>
-<%--        <p><input type="checkbox" name="roles" value="ADMIN" >set admin?</p>--%>
         <br>
         <input type="submit" value="Create!">
 

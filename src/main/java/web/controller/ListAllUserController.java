@@ -19,7 +19,7 @@ public class ListAllUserController {
     @RequestMapping(value = "list", method = RequestMethod.GET)
     public String returnListUsers(ModelMap model) {
         List<User> list = userServiceImp.getUserList();
-        model.addAttribute("list", list);   //haha. classic!
+        model.addAttribute("list", list);
         return "listAllUsers";
     }
 }

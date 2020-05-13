@@ -13,7 +13,7 @@ import web.model.User;
 import java.util.List;
 import java.util.Collections;
 
-@Service    //можно
+@Service
 public class UserServiceImp implements UserDetailsService, UserService {
 
     @Autowired

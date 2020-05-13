@@ -22,7 +22,6 @@ public class NewUserController {
 
     @RequestMapping(value = "new", method = RequestMethod.POST)
     public String saveCustomer(@ModelAttribute("user") User user) {
-//        System.out.println("ща создам юзера!");
         userServiceImp.save(user);
         return "redirect:/list";
     }

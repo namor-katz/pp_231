@@ -13,7 +13,6 @@
 <p> My name is  <c:out value="${user.name}" /> </p>
 <p>My email is  <c:out value="${user.email}" /> </p>
 <p>My weight ==  <c:out value="${user.maxweight}" />  </p>
-<%--<p><a href="<c:url value="/logout" />">Logout</a></p>--%>
 
 <jsp:include page="logout.jsp" />
 </body>
