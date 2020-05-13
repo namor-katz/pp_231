@@ -26,16 +26,18 @@ public class Role implements GrantedAuthority {
 
     //constructors
     public Role() {};
-/*
-    public Role(String role, Set<User> users) {
+
+    public Role(Long id, String role, Set<User> users) {
         this.role = role;
         this.users = users;
     }
-*/
+
     public Role(Long id, String role) {
         this.id = id;
         this.role = role;
     }
+
+
 /*
     public Role(String role, Set<User> users) {
         this.role = role;

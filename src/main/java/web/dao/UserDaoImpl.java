@@ -18,9 +18,17 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void userAdd(User user) {
+
         Session session = sessionFactory.openSession();
         session.save(user);
         session.close();
+
+/*
+        Session session = sessionFactory.openSession();
+        Transaction tx = session.beginTransaction();
+        Query q = session.createQuery();
+
+ */
     }
 
     @Override

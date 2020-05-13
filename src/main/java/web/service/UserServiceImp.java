@@ -12,6 +12,7 @@ import web.model.Role;
 import web.model.User;
 import java.util.List;
 import java.util.Collections;
+import java.util.Set;
 
 @Service
 public class UserServiceImp implements UserDetailsService, UserService {
@@ -31,6 +32,7 @@ public class UserServiceImp implements UserDetailsService, UserService {
 
     public void save(User user) {
         System.out.println("Я пробую сохранить!");
+        System.out.println("это суют тут " + user.getRoles());
         try {
             if(user.getRoles().equals("admin")) {
                 user.setRoles(Collections.singleton(new Role(2L, "ROLE_admin")));
@@ -38,12 +40,13 @@ public class UserServiceImp implements UserDetailsService, UserService {
             else if(user.getRoles().equals("user")) {
                 user.setRoles(Collections.singleton(new Role(1L, "ROLE_user")));
             }
-            user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-            userDao.userAdd(user);
-    } catch (Exception e) {
-            System.out.println("ошибка при UserServiceImp.save()");
-        e.printStackTrace();
+    } catch (NullPointerException e) {
+            user.setRoles(Collections.singleton(new Role(1L, "ROLE_user")));
+//            System.out.println("ошибка при UserServiceImp.save()");
+//        e.printStackTrace();
         }
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        userDao.userAdd(user);
     }
 
     public void deleteById(Long id) {
