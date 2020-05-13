@@ -30,16 +30,18 @@ public class UserServiceImp implements UserDetailsService, UserService {
     }
 
     public void save(User user) {
+        System.out.println("Я пробую сохранить!");
         try {
-        if(user.getRoles().equals("admin")) {
-            user.setRoles(Collections.singleton(new Role(1L, "ROLE_admin")));
-        }
-        else if(user.getRoles().equals("user")) {
-            user.setRoles(Collections.singleton(new Role(1L, "ROLE_user")));
-        }
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        userDao.userAdd(user);
+            if(user.getRoles().equals("admin")) {
+                user.setRoles(Collections.singleton(new Role(1L, "ROLE_admin")));
+            }
+            else if(user.getRoles().equals("user")) {
+                user.setRoles(Collections.singleton(new Role(1L, "ROLE_user")));
+            }
+            user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+            userDao.userAdd(user);
     } catch (Exception e) {
+            System.out.println("ошибка при UserServiceImp.save()");
         e.printStackTrace();
         }
     }
@@ -65,8 +67,8 @@ public class UserServiceImp implements UserDetailsService, UserService {
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         User user = userDao.getUserByName(s);
         Role role = user.getRoles().iterator().next();
-        String srole = role.getRole();
-        System.out.println("thix user is RoLe = " + srole);
+//        String srole = role.getRole();
+//        System.out.println("thix user is RoLe = " + srole);
         if (user == null) {
             throw new UsernameNotFoundException("This user not found");
         }
