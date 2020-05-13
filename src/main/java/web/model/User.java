@@ -46,12 +46,14 @@ public class User implements UserDetails {
         this.name = name;
         this.email = email;
         this.password = password;
+        this.maxweight = maxweight;
     }
 
     public User(String name, String email, String password, int maxweight, Set<Role> roles) {
         this.name = name;
         this.email = email;
         this.password = password;
+        this.maxweight = maxweight;
         this.roles = roles;
     }
 
@@ -102,7 +104,17 @@ public class User implements UserDetails {
     }
 
     public Set<Role> getRoles() {
-        return roles;
+        System.out.println("я щас упаду! (или нет)");
+        StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
+        System.out.println(stackTrace[2].getMethodName());
+        try {
+            return roles;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            return roles;
+        }
     }
 
     public void setRoles(Set<Role> roles) {
@@ -126,7 +138,7 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return null;
+        return getName();    //зоооооочем? дёргаешь это?!
     }
 
     @Override
