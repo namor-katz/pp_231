@@ -35,15 +35,13 @@ public class UserServiceImp implements UserDetailsService, UserService {
         System.out.println("это суют тут " + user.getRoles());
         try {
             if(user.getRoles().equals("admin")) {
-                user.setRoles(Collections.singleton(new Role(2L, "ROLE_admin")));
+                user.setRoles(Collections.singleton(new Role(2L, "ROLE_ADMIN")));
             }
             else if(user.getRoles().equals("user")) {
-                user.setRoles(Collections.singleton(new Role(1L, "ROLE_user")));
+                user.setRoles(Collections.singleton(new Role(1L, "ROLE_USER")));
             }
     } catch (NullPointerException e) {
-            user.setRoles(Collections.singleton(new Role(1L, "ROLE_user")));
-//            System.out.println("ошибка при UserServiceImp.save()");
-//        e.printStackTrace();
+            user.setRoles(Collections.singleton(new Role(1L, "ROLE_USER")));
         }
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userDao.userAdd(user);

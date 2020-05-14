@@ -20,15 +20,18 @@ public class UserDaoImpl implements UserDao {
     public void userAdd(User user) {
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         session.save(user);
+        session.getTransaction().commit();
         session.close();
 
 /*
+        String hql = "";
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
-        Query q = session.createQuery();
+        Query q = session.createQuery(hql);
+*/
 
- */
     }
 
     @Override
