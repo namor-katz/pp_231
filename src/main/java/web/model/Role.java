@@ -1,11 +1,7 @@
 package web.model;
 
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.Set;
 
 @Entity
 @Table(name = "role")
@@ -18,34 +14,14 @@ public class Role implements GrantedAuthority {
     @Column
     private String role;
 
-    @Transient
-    @ManyToMany(mappedBy = "roles", fetch = FetchType.EAGER)
-//    @JoinTable(name = "users_role",
-//    joinColumns = @JoinColumn (name="role_id"),
-//    inverseJoinColumns = @JoinColumn(name = "user_id"))
-//    @JoinColumn(name = "user_id", nullable = false)
-    private Set<User> users;
-
-
     //constructors
     public Role() {};
-
-    public Role(Long id, String role, Set<User> users) {
-        this.role = role;
-        this.users = users;
-    }
 
     public Role(Long id, String role) {
         this.id = id;
         this.role = role;
     }
 
-
-/*
-    public Role(String role, Set<User> users) {
-        this.role = role;
-        this.users = users;
-    }*/
 
     //getters and setters
 
@@ -65,15 +41,7 @@ public class Role implements GrantedAuthority {
         this.role = role;
     }
 
-    public Set<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(Set<User> users) {
-        this.users = users;
-    }
-
-    //implements
+    //implements methods
 
     @Override
     public String getAuthority() {

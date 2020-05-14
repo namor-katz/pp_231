@@ -30,8 +30,7 @@ public class User implements UserDetails {
     @Transient
     private String passwordConfirm;
 
-//    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinTable(name="users_role",
     joinColumns = @JoinColumn(name = "user_id"),
     inverseJoinColumns = @JoinColumn(name="roles_id"))
@@ -134,7 +133,7 @@ public class User implements UserDetails {
         this.maxweight = maxweight;
     }
 
-    //implements
+    //implements methods
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -31,8 +31,6 @@ public class UserServiceImp implements UserDetailsService, UserService {
     }
 
     public void save(User user) {
-        System.out.println("Я пробую сохранить!");
-        System.out.println("это суют тут " + user.getRoles());
         try {
             if(user.getRoles().equals("admin")) {
                 user.setRoles(Collections.singleton(new Role(2L, "ROLE_ADMIN")));
