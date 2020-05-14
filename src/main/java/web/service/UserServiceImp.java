@@ -65,9 +65,6 @@ public class UserServiceImp implements UserDetailsService, UserService {
     @Override
     public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
         User user = userDao.getUserByName(name);
-        Role role = user.getRoles().iterator().next();
-        String srole = role.getRole();
-        System.out.println("thix user is RoLe = " + srole);
         if (user == null) {
             throw new UsernameNotFoundException("This user not found");
         }

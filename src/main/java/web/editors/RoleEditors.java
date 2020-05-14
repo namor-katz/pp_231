@@ -1,8 +1,6 @@
 package web.editors;
 
 import java.beans.PropertyEditorSupport;
-
-import org.springframework.util.StringUtils;
 import web.model.Role;
 
 public class RoleEditors extends PropertyEditorSupport {
