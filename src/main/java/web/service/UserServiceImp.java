@@ -10,6 +10,8 @@ import web.dao.RoleDao;
 import web.dao.UserDao;
 import web.model.Role;
 import web.model.User;
+
+import java.util.Arrays;
 import java.util.List;
 import java.util.Collections;
 import java.util.Set;
@@ -36,7 +38,8 @@ public class UserServiceImp implements UserDetailsService, UserService {
                 user.setRoles(Collections.singleton(new Role(2L, "ROLE_ADMIN")));
             }
             else if(user.getRoles().equals("user")) {
-                user.setRoles(Collections.singleton(new Role(1L, "ROLE_USER")));
+//                user.setRoles(Collections.singleton(new Role(1L, "ROLE_USER")));
+                user.setRoles((Set<Role>) roleDao.getRoleById(1L));
             }
     } catch (NullPointerException e) {
             user.setRoles(Collections.singleton(new Role(1L, "ROLE_USER")));
