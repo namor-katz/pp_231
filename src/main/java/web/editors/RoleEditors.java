@@ -10,10 +10,13 @@ public class RoleEditors extends PropertyEditorSupport {
     @Override
     public void setAsText(String text) throws IllegalArgumentException {
         if(text.equals("admin")) {
-            setValue(new Role(2L, text));   //this admin
+            setValue(new Role(2L, "ROLE_ADMIN"));   //this admin
+        }
+        else if (text.equals("user")) {
+            setValue(new Role(1L, "ROLE_USER"));   //this user.
         }
         else {
-            setValue(new Role(1L, text));   //this user.
+            setValue((new Role(1L, "ROLE_USER")));
         }
     }
 
