@@ -11,10 +11,7 @@ import web.dao.UserDao;
 import web.model.Role;
 import web.model.User;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Collections;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class UserServiceImp implements UserDetailsService, UserService {
@@ -33,7 +30,10 @@ public class UserServiceImp implements UserDetailsService, UserService {
     }
 
     public void save(User user) {
-        try { //чо за хуйня? это давно обработано в редакторе.
+        Set<Role> set = new HashSet<>();
+        set.add(roleDao.getRoleById(1L));
+
+        try { //если никто не поставил галочку
             if(user.getRoles().equals("admin")) {
                 user.setRoles(Collections.singleton(new Role(2L, "ROLE_ADMIN")));
             }
@@ -41,9 +41,13 @@ public class UserServiceImp implements UserDetailsService, UserService {
 //                user.setRoles(Collections.singleton(new Role(1L, "ROLE_USER")));
                 user.setRoles((Set<Role>) roleDao.getRoleById(1L));
             }
+            else {
+                user.setRoles(set);
+            }
     } catch (NullPointerException e) {
             user.setRoles(Collections.singleton(new Role(1L, "ROLE_USER")));
         }
+
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userDao.userAdd(user);
     }
