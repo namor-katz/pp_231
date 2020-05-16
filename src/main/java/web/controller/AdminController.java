@@ -24,6 +24,12 @@ public class AdminController {
         this.userServiceImp = userServiceImp;
     }
 
+    @RequestMapping(value = "login", method = RequestMethod.GET)
+    public String loginPage() {
+        return "login";
+    }
+
+
     //do create new user
     @GetMapping(value = "new")
     public String newUserPage(Model model) {
