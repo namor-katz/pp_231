@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import web.service.UserServiceImp;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/fuck34")
 public class DeleteUserController {
 
     @Autowired

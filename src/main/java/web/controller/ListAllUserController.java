@@ -10,7 +10,7 @@ import web.service.UserServiceImp;
 import java.util.List;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/fuck2")
 public class ListAllUserController {
 
     @Autowired

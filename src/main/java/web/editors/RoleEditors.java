@@ -22,7 +22,7 @@ public class RoleEditors extends PropertyEditorSupport {
     public String getAsText() {
         Role role = (Role) getValue();
         if(role != null) {
-            return role.getName();
+            return role.getRole();
         } else {
             return "";
         }

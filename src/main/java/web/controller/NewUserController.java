@@ -4,32 +4,29 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import web.editors.RoleEditors;
 import web.model.Role;
 import web.model.User;
 import web.service.UserServiceImp;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/fuck")
 public class NewUserController {
 
     @Autowired
     UserServiceImp userServiceImp;
 
-    @RequestMapping(value = "new", method = RequestMethod.GET)
-    public String newUserCreate(Model model) {
+    @GetMapping(value = "new")
+    public String newUserPage(Model model) {
         model.addAttribute("userForm", new User());
         return "new_user";
     }
 
-    @RequestMapping(value = "new", method = RequestMethod.POST)
-    public String saveCustomer(@ModelAttribute("userForm") User user) {
+    @PostMapping(value = "new")
+    public String saveNewUser(@ModelAttribute("userForm") User user) {
         userServiceImp.save(user);
-        return "redirect:/list";
+        return "redirect:/admin/list";
     }
 
     @InitBinder

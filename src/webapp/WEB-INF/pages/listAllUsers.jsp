@@ -5,7 +5,7 @@
     <title>Список пользователей</title>
 </head>
 <body>
-<h2 align="center"><a href="/new">Add new user</a></h2>
+<h2 align="center"><a href="/admin/new">Add new user</a></h2>
 <h3></h3>
 <div align="center">
     <table border="1" cellpadding="5">
@@ -24,9 +24,9 @@
                 <td><c:out value="${user.email}" /></td>
                 <td><c:out value="${user.maxweight}" /></td>
                 <td>
-                    <a href="/edit?id=<c:out value='${user.id}' />">Edit</a>
+                    <a href="/admin/edit?id=<c:out value='${user.id}' />">Edit</a>
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="/delete?id=<c:out value='${user.id}' />">Delete</a>
+                    <a href="/admin/delete?id=<c:out value='${user.id}' />">Delete</a>
                 </td>
 
             </tr>
