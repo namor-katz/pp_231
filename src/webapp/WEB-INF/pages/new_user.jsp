@@ -30,8 +30,8 @@
         MaxWeigth: <br>
         <form:input type="text" path="maxweight" placeholder="maxweigth"></form:input>
     <br>
-        Set role User!<br>
-        <form:checkbox path="roles" value="user"></form:checkbox>
+        Set role Admin?<br>
+        <form:checkbox path="roles" value="admin"></form:checkbox>
 <%--        <p><select name="roles">--%>
 <%--            <option>user</option>--%>
 <%--            <option>admin</option>--%>

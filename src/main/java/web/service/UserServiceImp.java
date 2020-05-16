@@ -30,24 +30,16 @@ public class UserServiceImp implements UserDetailsService, UserService {
     }
 
     public void save(User user) {
+        System.out.println(user.getEmail());
         Set<Role> set = new HashSet<>();
-        set.add(roleDao.getRoleById(1L));
-
-        try { //если никто не поставил галочку
-            if(user.getRoles().equals("admin")) {
-                user.setRoles(Collections.singleton(new Role(2L, "ROLE_ADMIN")));
-            }
-            else if(user.getRoles().equals("user")) {
-//                user.setRoles(Collections.singleton(new Role(1L, "ROLE_USER")));
-                user.setRoles((Set<Role>) roleDao.getRoleById(1L));
-            }
-            else {
-                user.setRoles(set);
-            }
-    } catch (NullPointerException e) {
-            user.setRoles(Collections.singleton(new Role(1L, "ROLE_USER")));
+        if(user.getRoles().size() > 0) {
+            set.add(roleDao.getRoleById(1L));
+            set.add(roleDao.getRoleById(2L));
         }
-
+        else {
+            set.add(roleDao.getRoleById(1L));
+        }
+        user.setRoles(set);
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userDao.userAdd(user);
     }
