@@ -33,7 +33,7 @@ public class UserServiceImp implements UserDetailsService, UserService {
     }
 
     public void save(User user) {
-        try {
+        try { //чо за хуйня? это давно обработано в редакторе.
             if(user.getRoles().equals("admin")) {
                 user.setRoles(Collections.singleton(new Role(2L, "ROLE_ADMIN")));
             }
