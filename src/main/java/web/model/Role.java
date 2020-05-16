@@ -12,14 +12,14 @@ public class Role implements GrantedAuthority {
     private Long id;
 
     @Column
-    private String role;
+    private String name;
 
     //constructors
     public Role() {};
 
-    public Role(Long id, String role) {
+    public Role(Long id, String name) {
         this.id = id;
-        this.role = role;
+        this.name = name;
     }
 
 
@@ -33,19 +33,19 @@ public class Role implements GrantedAuthority {
         this.id = id;
     }
 
-    public String getRole() {
-        return role;
+    public String getName() {
+        return name;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setName(String role) {
+        this.name = role;
     }
 
     //implements methods
 
     @Override
     public String getAuthority() {
-        return getRole();
+        return getName();
     }
 }
 

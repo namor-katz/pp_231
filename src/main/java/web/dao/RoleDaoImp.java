@@ -21,7 +21,7 @@ public class RoleDaoImp implements RoleDao {
     }
 
     public Role getRoleById(Long id) {
-        Role role = (Role) sessionFactory.getCurrentSession().load(Role.class, id);
+        Role role = sessionFactory.getCurrentSession().load(Role.class, id);
         return role;
     }
 }
