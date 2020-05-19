@@ -10,21 +10,21 @@ import javax.persistence.PersistenceUnit;
 
 import org.springframework.transaction.annotation.Transactional;
 
-//@Transactional
+@Transactional
 @Repository
 public class RoleDaoImp implements RoleDao {
 
-    @PersistenceUnit
-    private EntityManagerFactory emf;   //OR @Autowired
+    @PersistenceContext
+    private EntityManager em;   //OR @Autowired
 
     @Override
     public void add(Role roles) {
-        EntityManager em = emf.createEntityManager();
+//        EntityManager em = emf.createEntityManager();
         em.persist(roles);
     }
 
     public Role getRoleById(Long id) {
-        EntityManager em = emf.createEntityManager();
+//        EntityManager em = emf.createEntityManager();
         return em.find(Role.class, id);
     }
 }

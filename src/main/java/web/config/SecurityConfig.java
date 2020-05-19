@@ -56,10 +56,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http
                 .authorizeRequests()
-                .antMatchers("/login").permitAll()  //доступ даём всем, в тч анонимусам.
-                .antMatchers("/user").authenticated()
-                .antMatchers("/admin/**").hasAuthority("admin")
-//                .access("hasAnyRole('ADMIN')").anyRequest().authenticated() //финал был тут
+                .antMatchers("/login").anonymous()  //доступ даём всем, в тч анонимусам.
+                .antMatchers("/user").access("hasAnyRole('USER')")
+                .antMatchers("/hello", "/list", "/edit", "/delete", "/new")
+                .access("hasAnyRole('ADMIN')").anyRequest().authenticated() //финал был тут
                 .and()
                 .logout()
                 .permitAll()

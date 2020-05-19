@@ -24,13 +24,7 @@ public class AdminController {
         this.userServiceImp = userServiceImp;
     }
 
-    @RequestMapping(value = "login", method = RequestMethod.GET)
-    public String loginPage() {
-        return "login";
-    }
-
-
-    //do create new user
+    //======== do create new user ==========
     @GetMapping(value = "new")
     public String newUserPage(Model model) {
         model.addAttribute("userForm", new User());
@@ -42,7 +36,7 @@ public class AdminController {
         userServiceImp.save(user);
         return "redirect:/admin/list";
     }
-//begin
+//========== begin create new user ===========
 
     @InitBinder
     public void initBinder(WebDataBinder binder) {

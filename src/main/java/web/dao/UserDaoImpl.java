@@ -10,12 +10,12 @@ import java.util.List;
 @Repository
 @Transactional
 public class UserDaoImpl implements UserDao {
-    @PersistenceUnit
-    private EntityManagerFactory emf;
+    @PersistenceContext
+    private EntityManager em;
 
     @Override
     public void userAdd(User user) {
-        EntityManager em = emf.createEntityManager();
+//        EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         em.persist(user);
         em.getTransaction().commit();
@@ -23,7 +23,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void deleteUserById(Long id) {
-        EntityManager em = emf.createEntityManager();
+//        EntityManager em = emf.createEntityManager();
         User user = em.find(User.class, id);
         em.getTransaction().begin();
         em.remove(user);
@@ -35,9 +35,10 @@ public class UserDaoImpl implements UserDao {
         deleteUserById(id);
     }
 
+    @Transactional(readOnly = true)
     @Override
     public User getUserById(Long id) {
-        EntityManager em = emf.createEntityManager();
+//        EntityManager em = emf.createEntityManager();
         return em.find(User.class, id);
         /*
         String hql = "from User where id = :id";
@@ -51,10 +52,10 @@ public class UserDaoImpl implements UserDao {
         return list.get(0);*/
     }
 
-
+    @Transactional(readOnly = true)
     @Override
     public User getUserByName(String name) {
-        EntityManager em = emf.createEntityManager();
+//        EntityManager em = emf.createEntityManager();
         TypedQuery<User> query = em.createQuery("select u from User u where u.name = :name", User.class);
         query.setParameter("name", name);
         return query.getSingleResult();
@@ -62,7 +63,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void editUserById(Long id, String name, String email, int maxweigth) {
-        EntityManager em = emf.createEntityManager();
+//        EntityManager em = emf.createEntityManager();
         User user = getUserById(id);
         user.setName(name);
         user.setEmail(email);
@@ -73,9 +74,10 @@ public class UserDaoImpl implements UserDao {
 
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<User> getAllUsers() {
-        EntityManager em = emf.createEntityManager();
+//        EntityManager em = emf.createEntityManager();
         TypedQuery<User> query = em.createQuery("select u from User u", User.class);
         return query.getResultList();
     }

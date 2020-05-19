@@ -63,6 +63,9 @@ public class UserServiceImp implements UserDetailsService, UserService {
 
     @Override
     public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
+        StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
+        System.out.println("Я метод который вызвал получение юзера!");
+        System.out.println(stackTrace[2].getMethodName());  //debug
         User user = userDao.getUserByName(name);
         if (user == null) {
             throw new UsernameNotFoundException("This user not found");
